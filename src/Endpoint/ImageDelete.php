@@ -47,7 +47,7 @@ class ImageDelete extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
         return str_replace(['{name}'], [$this->name], '/images/{name}');
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return [[], null];
     }
@@ -78,7 +78,7 @@ class ImageDelete extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \J
      *
      * @return null|\Docker\API\Model\ImageDeleteResponseItem[]
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
     {
         if (200 === $status) {
             return $serializer->deserialize($body, 'Docker\\API\\Model\\ImageDeleteResponseItem[]', 'json');

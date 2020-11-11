@@ -24,7 +24,7 @@ class SystemDataUsage extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
         return '/system/df';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return [[], null];
     }
@@ -41,7 +41,7 @@ class SystemDataUsage extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
      *
      * @return null|\Docker\API\Model\SystemDfGetResponse200
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
     {
         if (200 === $status) {
             return $serializer->deserialize($body, 'Docker\\API\\Model\\SystemDfGetResponse200', 'json');

@@ -38,7 +38,7 @@ class ContainerUpdate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
         return str_replace(['{id}'], [$this->id], '/containers/{id}/update');
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return $this->getSerializedBody($serializer);
     }
@@ -56,7 +56,7 @@ class ContainerUpdate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
      *
      * @return null|\Docker\API\Model\ContainersIdUpdatePostResponse200
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
     {
         if (200 === $status) {
             return $serializer->deserialize($body, 'Docker\\API\\Model\\ContainersIdUpdatePostResponse200', 'json');

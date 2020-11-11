@@ -34,7 +34,7 @@ class ServiceDelete extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
         return str_replace(['{id}'], [$this->id], '/services/{id}');
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return [[], null];
     }
@@ -51,7 +51,7 @@ class ServiceDelete extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
      * @throws \Docker\API\Exception\ServiceDeleteInternalServerErrorException
      * @throws \Docker\API\Exception\ServiceDeleteServiceUnavailableException
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
     {
         if (200 === $status) {
             return null;

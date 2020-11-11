@@ -37,7 +37,7 @@ class ContainerCreate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
         return '/containers/create';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return $this->getSerializedBody($serializer);
     }
@@ -68,7 +68,7 @@ class ContainerCreate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
      *
      * @return null|\Docker\API\Model\ContainersCreatePostResponse201
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
     {
         if (201 === $status) {
             return $serializer->deserialize($body, 'Docker\\API\\Model\\ContainersCreatePostResponse201', 'json');

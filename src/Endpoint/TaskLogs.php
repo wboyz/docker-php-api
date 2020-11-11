@@ -51,7 +51,7 @@ class TaskLogs extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
         return str_replace(['{id}'], [$this->id], '/tasks/{id}/logs');
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return [[], null];
     }
@@ -85,7 +85,7 @@ class TaskLogs extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \Jane
      * @throws \Docker\API\Exception\TaskLogsInternalServerErrorException
      * @throws \Docker\API\Exception\TaskLogsServiceUnavailableException
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
     {
         if (101 === $status) {
             return json_decode($body);

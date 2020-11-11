@@ -122,7 +122,7 @@ class ContainerAttach extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
         return str_replace(['{id}'], [$this->id], '/containers/{id}/attach');
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return [[], null];
     }
@@ -155,7 +155,7 @@ class ContainerAttach extends \Jane\OpenApiRuntime\Client\BaseEndpoint implement
      * @throws \Docker\API\Exception\ContainerAttachNotFoundException
      * @throws \Docker\API\Exception\ContainerAttachInternalServerErrorException
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
     {
         if (101 === $status) {
             return null;

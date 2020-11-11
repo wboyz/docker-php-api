@@ -40,7 +40,7 @@ class ContainerPrune extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
         return '/containers/prune';
     }
 
-    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, \Http\Message\StreamFactory $streamFactory = null): array
+    public function getBody(\Symfony\Component\Serializer\SerializerInterface $serializer, $streamFactory = null): array
     {
         return [[], null];
     }
@@ -68,7 +68,7 @@ class ContainerPrune extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements
      *
      * @return null|\Docker\API\Model\ContainersPrunePostResponse200
      */
-    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer)
+    protected function transformResponseBody(string $body, int $status, \Symfony\Component\Serializer\SerializerInterface $serializer, ?string $contentType)
     {
         if (200 === $status) {
             return $serializer->deserialize($body, 'Docker\\API\\Model\\ContainersPrunePostResponse200', 'json');
