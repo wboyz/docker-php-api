@@ -1,6 +1,6 @@
-# No longer maintained
+# Forked for compatibility
 
-I'm backing off maintaining this library due to a lack of motivation, time and usage of docker, contact me on twitter https://twitter.com/joelwurtz if you wish to take over this repository (or just do a fork).
+This is a fork of the no longer maintained https://github.com/docker-php/docker-php-api repository.
 
 # Docker PHP Api
 
