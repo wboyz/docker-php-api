@@ -20,7 +20,7 @@ class VolumeCreate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements \
         $this->body = $volumeConfig;
     }
 
-    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait, \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
 
     public function getMethod(): string
     {

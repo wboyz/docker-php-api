@@ -20,7 +20,7 @@ class NetworkCreate extends \Jane\OpenApiRuntime\Client\BaseEndpoint implements 
         $this->body = $networkConfig;
     }
 
-    use \Jane\OpenApiRuntime\Client\AmpArtaxEndpointTrait, \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
+    use \Jane\OpenApiRuntime\Client\Psr7HttplugEndpointTrait;
 
     public function getMethod(): string
     {
